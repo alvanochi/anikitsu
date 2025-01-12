@@ -20,6 +20,12 @@ interface ApiService {
         @Query("filter[status]") status: String = "finished"
     ): Anime
 
+    @GET("anime")
+    suspend fun getQueryAnime(
+        @Query("filter[text]") query: String? = null,
+        @Query("page[limit]") limit: String = "20"
+    ): Anime
+
     @GET("anime/{animeId}")
     suspend fun getAnimeById(
         @Path("animeId") animeId: String

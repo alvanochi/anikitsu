@@ -20,6 +20,10 @@ class AnimeRepositoryImpl @Inject constructor(
         return apiService.getFinishedAnime()
     }
 
+    override suspend fun getListQueryAnime(query: String): Anime {
+        return apiService.getQueryAnime(query)
+    }
+
     override suspend fun getAnimeById(id: String): DetailAnime {
         return apiService.getAnimeById(id)
     }

@@ -9,5 +9,7 @@ interface AnimeRepository {
 
     suspend fun getListFinishedAnime(): Anime
 
+    suspend fun getListQueryAnime(query: String): Anime
+
     suspend fun getAnimeById(id: String): DetailAnime
 }

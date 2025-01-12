@@ -43,14 +43,10 @@ fun Search(
         placeholder = {
             Text(stringResource(R.string.placeholder_search))
         },
-        colors = SearchBarDefaults.colors(
-            containerColor = MaterialTheme.colorScheme.background
-        ),
         shape = MaterialTheme.shapes.extraLarge,
         modifier = modifier
             .padding(16.dp)
             .fillMaxWidth()
-            .heightIn(min = 48.dp)
     ) {}
 }
 

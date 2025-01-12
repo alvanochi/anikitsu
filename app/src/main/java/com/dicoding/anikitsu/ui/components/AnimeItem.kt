@@ -24,37 +24,36 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import com.dicoding.anikitsu.R
 import com.dicoding.anikitsu.ui.screen.profile.ProfileScreen
 import com.dicoding.anikitsu.ui.theme.AniKitsuTheme
 
 @Composable
 fun AnimeItem(
-    image: Int,
+    image: String?,
     title: String,
     createdAt: String,
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier) {
-        Image(
-            painter = painterResource(image),
+        AsyncImage(
+            model = image,
             contentDescription = null,
             modifier = Modifier
+                .size(200.dp, 280.dp)
                 .clip(RoundedCornerShape(20.dp))
         )
-        TitleText(title, modifier = modifier.padding(horizontal = 4.dp))
+        TitleText(
+            title,
+            modifier = modifier
+                .padding(horizontal = 4.dp)
+                .width(160.dp)
+        )
         Text(
             createdAt,
             style = MaterialTheme.typography.titleSmall,
             modifier = modifier.padding(horizontal = 4.dp)
             )
-    }
-}
-
-@Preview(showBackground = true, device = Devices.PIXEL_4_XL, showSystemUi = true)
-@Composable
-fun PreviewItem(){
-    AniKitsuTheme {
-        AnimeItem(R.drawable.conan, "Judul Anime", "2024")
     }
 }

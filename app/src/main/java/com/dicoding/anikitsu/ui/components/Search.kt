@@ -22,10 +22,14 @@ import com.dicoding.anikitsu.ui.theme.AniKitsuTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Search(modifier: Modifier = Modifier) {
+fun Search(
+    query: String,
+    onQueryChange: (String) -> Unit,
+    modifier: Modifier = Modifier
+) {
     SearchBar(
-        query = "",
-        onQueryChange = {},
+        query = query,
+        onQueryChange = onQueryChange,
         onSearch = {},
         active = false,
         onActiveChange = {},
@@ -39,21 +43,21 @@ fun Search(modifier: Modifier = Modifier) {
         placeholder = {
             Text(stringResource(R.string.placeholder_search))
         },
-        shape = MaterialTheme.shapes.large,
         colors = SearchBarDefaults.colors(
             containerColor = MaterialTheme.colorScheme.background
         ),
+        shape = MaterialTheme.shapes.extraLarge,
         modifier = modifier
             .padding(16.dp)
             .fillMaxWidth()
-    ) {
-    }
+            .heightIn(min = 48.dp)
+    ) {}
 }
 
 @Preview(showBackground = true)
 @Composable
 fun SearchPreview() {
     AniKitsuTheme {
-        Search()
+//        Search()
     }
 }

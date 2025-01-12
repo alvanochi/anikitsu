@@ -1,29 +1,13 @@
 package com.dicoding.anikitsu.data
 
-import com.dicoding.anikitsu.data.retrofit.ApiService
 import com.dicoding.anikitsu.model.Anime
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.map
+import com.dicoding.anikitsu.model.DataItem
+import com.dicoding.anikitsu.model.DetailAnime
 
-class AnimeRepository(private val apiService: ApiService) {
+interface AnimeRepository {
+    suspend fun getListOngoingAnime(): Anime
 
-    suspend fun getListOngoingAnime(): List<Anime> {
-        return apiService.getOngoingAnime()
-    }
+    suspend fun getListFinishedAnime(): Anime
 
-    companion object {
-        @Volatile
-        private var instance: AnimeRepository? = null
-
-        fun getInstance(
-            apiService: ApiService
-        ): AnimeRepository =
-            instance ?: synchronized(this) {
-                AnimeRepository(apiService).apply {
-                    instance = this
-                }
-            }
-    }
-
+    suspend fun getAnimeById(id: String): DetailAnime
 }

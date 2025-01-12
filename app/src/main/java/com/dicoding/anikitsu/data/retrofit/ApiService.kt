@@ -1,7 +1,10 @@
 package com.dicoding.anikitsu.data.retrofit
 
 import com.dicoding.anikitsu.model.Anime
+import com.dicoding.anikitsu.model.DataItem
+import com.dicoding.anikitsu.model.DetailAnime
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
@@ -9,11 +12,16 @@ interface ApiService {
     suspend fun getOngoingAnime(
         @Query("page[limit]") limit: String = "10",
         @Query("filter[status]") status: String = "current"
-    ): List<Anime>
+    ): Anime
 
-    @GET
+    @GET("anime")
     suspend fun getFinishedAnime(
         @Query("page[limit]") limit: String = "10",
         @Query("filter[status]") status: String = "finished"
-    ): List<Anime>
+    ): Anime
+
+    @GET("anime/{animeId}")
+    suspend fun getAnimeById(
+        @Path("animeId") animeId: String
+    ): DetailAnime
 }

@@ -14,8 +14,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -30,7 +28,6 @@ import com.dicoding.anikitsu.ui.screen.detail.DetailScreen
 import com.dicoding.anikitsu.ui.screen.favorite.FavoriteScreen
 import com.dicoding.anikitsu.ui.screen.home.HomeScreen
 import com.dicoding.anikitsu.ui.screen.profile.ProfileScreen
-import com.dicoding.anikitsu.ui.theme.AniKitsuTheme
 
 @Composable
 fun AniKitsuApp(
@@ -41,7 +38,9 @@ fun AniKitsuApp(
     val currentRoute = navBackStackEntry?.destination?.route
     Scaffold(
         bottomBar = {
-            BottomBar(navController)
+            if (currentRoute != Screen.DetailAnime.route) {
+                BottomBar(navController)
+            }
         },
         modifier = modifier
     ) { innerPadding ->
@@ -51,7 +50,11 @@ fun AniKitsuApp(
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(Screen.Home.route) {
-//                HomeScreen()
+                HomeScreen(
+                    navigateToDetail = { animeId ->
+                        navController.navigate(Screen.DetailAnime.createRoute(animeId))
+                    }
+                )
             }
             composable(Screen.Bookmark.route) {
                 FavoriteScreen()
@@ -59,12 +62,13 @@ fun AniKitsuApp(
             composable(Screen.Profile.route) {
                 ProfileScreen()
             }
-//            composable(
-//                route = Screen.DetailAnime.route,
-//                arguments = listOf(navArgument("animeId") { type = NavType.LongType }),
-//            ) {
-//                DetailScreen()
-//            }
+            composable(
+                route = Screen.DetailAnime.route,
+                arguments = listOf(navArgument("animeId") { type = NavType.StringType }),
+            ) {
+                val id = it.arguments?.getString("animeId") ?: ""
+                DetailScreen(animeId = id)
+            }
         }
     }
 }
@@ -120,11 +124,3 @@ private fun BottomBar(
     }
 }
 
-
-@Preview(showBackground = true)
-@Composable
-fun AniKitsuAppPreview() {
-    AniKitsuTheme {
-        AniKitsuApp()
-    }
-}

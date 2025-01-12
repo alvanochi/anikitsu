@@ -16,7 +16,7 @@ fun TitleText(
 ) {
     Text(
         text,
-        maxLines = 2,
+        maxLines = 1,
         overflow = TextOverflow.Ellipsis,
         style = MaterialTheme.typography.titleMedium.copy(
             fontWeight = FontWeight.ExtraBold

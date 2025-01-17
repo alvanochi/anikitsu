@@ -9,5 +9,6 @@
     <string name="section_finished">Finished</string>
     <string name="section_ongoing">Ongoing</string>
     <string name="section_query">Result</string>
+    <string name="section_favorite">Favorite Anime</string>
     <string name="section_query_empty">Sorry, we cannot find the anime that you are looking for :(</string>
 </resources>

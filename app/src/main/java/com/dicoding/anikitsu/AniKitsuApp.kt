@@ -57,7 +57,11 @@ fun AniKitsuApp(
                 )
             }
             composable(Screen.Bookmark.route) {
-                FavoriteScreen()
+                FavoriteScreen(
+                    navigateToDetail = { animeId ->
+                        navController.navigate(Screen.DetailAnime.createRoute(animeId))
+                    }
+                )
             }
             composable(Screen.Profile.route) {
                 ProfileScreen()

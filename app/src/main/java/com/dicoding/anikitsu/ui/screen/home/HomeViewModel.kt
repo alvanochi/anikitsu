@@ -32,7 +32,13 @@ class HomeViewModel @Inject constructor(private val repository: AnimeRepository)
     private val _isLoading = MutableStateFlow<Boolean>(true)
     val isLoading: StateFlow<Boolean> get() = _isLoading
 
-    fun getListOngoingAnime() {
+    init {
+        getListOngoingAnime()
+
+        getListFinishedAnime()
+    }
+
+    private fun getListOngoingAnime() {
         viewModelScope.launch {
             try {
                 val response = repository.getListOngoingAnime()
@@ -46,7 +52,7 @@ class HomeViewModel @Inject constructor(private val repository: AnimeRepository)
         }
     }
 
-    fun getListFinishedAnime() {
+    private fun getListFinishedAnime() {
         viewModelScope.launch {
             try {
                 val response = repository.getListFinishedAnime()

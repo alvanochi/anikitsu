@@ -29,9 +29,6 @@ fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel(),
     navigateToDetail: (String) -> Unit
 ) {
-    viewModel.getListOngoingAnime()
-
-    viewModel.getListFinishedAnime()
 
     val ongoingAnimeList by viewModel.ongoingAnime.collectAsState()
     val finishedAnimeList by viewModel.finishedAnime.collectAsState()

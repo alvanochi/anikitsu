@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
@@ -125,6 +126,7 @@ fun DetailContent(
                         .clip(RoundedCornerShape(20.dp))
                 )
             }
+            Spacer(modifier = modifier.height(16.dp))
             HeadlineText(title, modifier = modifier.padding(top = 120.dp, start = 18.dp))
             Row {
                 SubTitleText(Util.extractYear(createdAt).toString(), modifier = modifier.padding(start = 20.dp))

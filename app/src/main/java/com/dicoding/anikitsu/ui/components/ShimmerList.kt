@@ -5,10 +5,13 @@ import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
@@ -30,7 +33,9 @@ import androidx.compose.ui.unit.dp
 fun ShimmerList(
     modifier: Modifier = Modifier
 ) {
-    Column {
+    Column(
+        modifier = modifier.padding(vertical = 16.dp),
+    ) {
         Box(
             modifier = modifier
                 .size(200.dp, 280.dp)

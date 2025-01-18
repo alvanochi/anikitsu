@@ -23,6 +23,7 @@ import com.dicoding.anikitsu.ui.components.AnimeGrid
 import com.dicoding.anikitsu.ui.components.AnimeRow
 import com.dicoding.anikitsu.ui.components.HeadlineText
 import com.dicoding.anikitsu.ui.components.Search
+import com.dicoding.anikitsu.ui.components.TextEmpty
 
 @Composable
 fun HomeScreen(
@@ -51,12 +52,7 @@ fun HomeScreen(
         if(query.isNotEmpty()) {
             HeadlineText(stringResource(R.string.section_query), modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp))
             if(queryAnimeList.isEmpty()){
-                Text(
-                    text = stringResource(R.string.section_query_empty),
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier
-                        .padding(horizontal = 16.dp, vertical = 200.dp)
-                )
+                TextEmpty(stringResource(R.string.section_query_empty))
             } else {
                 HomeQueryContent(queryAnimeList, navigateToDetail, isLoading)
             }

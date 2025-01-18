@@ -11,4 +11,5 @@
     <string name="section_query">Result</string>
     <string name="section_favorite">Favorite Anime</string>
     <string name="section_query_empty">Sorry, we cannot find the anime that you are looking for :(</string>
+    <string name="section_favorite_empty">You have not added anime to your favorite</string>
 </resources>

@@ -1,6 +1,5 @@
 package com.dicoding.anikitsu.ui.screen.favorite
 
-import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
@@ -14,6 +13,7 @@ import com.dicoding.anikitsu.R
 import com.dicoding.anikitsu.model.AnimeEntity
 import com.dicoding.anikitsu.ui.components.AnimeFavGrid
 import com.dicoding.anikitsu.ui.components.HeadlineText
+import com.dicoding.anikitsu.ui.components.TextEmpty
 
 @Composable
 fun FavoriteScreen(
@@ -24,7 +24,14 @@ fun FavoriteScreen(
 
     val favAnimeList by viewModel.favAnime.collectAsState()
 
-    FavoriteContent(favAnimeList, navigateToDetail)
+    Column {
+        HeadlineText(stringResource(R.string.section_favorite), modifier = Modifier.padding(top = 20.dp, start = 16.dp, bottom = 8.dp))
+        if(favAnimeList.isNotEmpty()){
+            FavoriteContent(favAnimeList, navigateToDetail)
+        } else {
+            TextEmpty(stringResource(R.string.section_favorite_empty))
+        }
+    }
 
 }
 
@@ -33,8 +40,5 @@ fun FavoriteContent(
     favAnime: List<AnimeEntity>,
     navigateToDetail: (String) -> Unit,
 ) {
-    Column {
-        HeadlineText(stringResource(R.string.section_favorite), modifier = Modifier.padding(top = 20.dp, start = 16.dp, bottom = 8.dp))
-        AnimeFavGrid(favAnime, navigateToDetail)
-    }
+    AnimeFavGrid(favAnime, navigateToDetail)
 }

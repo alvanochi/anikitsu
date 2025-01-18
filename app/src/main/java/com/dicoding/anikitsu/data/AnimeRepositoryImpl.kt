@@ -5,7 +5,6 @@ import com.dicoding.anikitsu.data.room.AnimeDao
 import com.dicoding.anikitsu.model.Anime
 import com.dicoding.anikitsu.model.AnimeEntity
 import com.dicoding.anikitsu.model.DetailAnime
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class AnimeRepositoryImpl @Inject constructor(

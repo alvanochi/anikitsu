@@ -1,7 +1,6 @@
 package com.dicoding.anikitsu.data.retrofit
 
 import com.dicoding.anikitsu.model.Anime
-import com.dicoding.anikitsu.model.DataItem
 import com.dicoding.anikitsu.model.DetailAnime
 import retrofit2.http.GET
 import retrofit2.http.Path

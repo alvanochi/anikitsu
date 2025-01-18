@@ -2,9 +2,7 @@ package com.dicoding.anikitsu.data
 
 import com.dicoding.anikitsu.model.Anime
 import com.dicoding.anikitsu.model.AnimeEntity
-import com.dicoding.anikitsu.model.DataItem
 import com.dicoding.anikitsu.model.DetailAnime
-import kotlinx.coroutines.flow.Flow
 
 interface AnimeRepository {
     suspend fun getListOngoingAnime(): Anime

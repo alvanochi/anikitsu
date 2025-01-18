@@ -1,10 +1,8 @@
-package com.dicoding.anikitsu.data.retrofit
+package com.dicoding.anikitsu.data
 
-import android.app.Application
 import android.content.Context
 import androidx.room.Room
-import com.dicoding.anikitsu.data.AnimeRepository
-import com.dicoding.anikitsu.data.AnimeRepositoryImpl
+import com.dicoding.anikitsu.data.retrofit.ApiService
 import com.dicoding.anikitsu.data.room.AnimeDao
 import com.dicoding.anikitsu.data.room.AnimeDatabase
 import dagger.Module

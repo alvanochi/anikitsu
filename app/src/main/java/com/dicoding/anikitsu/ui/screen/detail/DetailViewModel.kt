@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dicoding.anikitsu.data.AnimeRepository
-import com.dicoding.anikitsu.model.Anime
 import com.dicoding.anikitsu.model.AnimeEntity
 import com.dicoding.anikitsu.model.DataItem
 import dagger.hilt.android.lifecycle.HiltViewModel

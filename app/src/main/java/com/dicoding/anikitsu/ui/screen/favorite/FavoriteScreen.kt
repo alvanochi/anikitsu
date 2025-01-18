@@ -20,6 +20,7 @@ fun FavoriteScreen(
     viewModel: FavoriteViewModel = hiltViewModel(),
     navigateToDetail: (String) -> Unit,
 ) {
+    viewModel.getListFavAnime()
 
     val favAnimeList by viewModel.favAnime.collectAsState()
 

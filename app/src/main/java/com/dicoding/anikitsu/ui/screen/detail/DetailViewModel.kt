@@ -5,12 +5,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dicoding.anikitsu.data.AnimeRepository
 import com.dicoding.anikitsu.model.Anime
+import com.dicoding.anikitsu.model.AnimeEntity
 import com.dicoding.anikitsu.model.DataItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+
 
 @HiltViewModel
 class DetailViewModel @Inject constructor(private val repository: AnimeRepository) : ViewModel() {
@@ -20,6 +22,9 @@ class DetailViewModel @Inject constructor(private val repository: AnimeRepositor
     private val _isLoading = MutableStateFlow<Boolean>(true)
     val isLoading: StateFlow<Boolean> get() = _isLoading
 
+    private val _isFavAnime = MutableStateFlow<AnimeEntity?>(null)
+    val isFavAnime: StateFlow<AnimeEntity?> get() = _isFavAnime
+
     private val _error = MutableStateFlow<String?>(null)
     val error: StateFlow<String?> get() = _error
 
@@ -28,12 +33,32 @@ class DetailViewModel @Inject constructor(private val repository: AnimeRepositor
             try {
                 val response = repository.getAnimeById(id)
                 _anime.value = response.data
-
                 _isLoading.value = false
             } catch (e: Exception) {
                 _error.value = e.message
-                Log.e("GAGAL", e.message.toString() )
+                Log.e("GAGAL", e.message.toString())
             }
+        }
+    }
+
+    fun saveAnime(anime: List<AnimeEntity>) {
+        viewModelScope.launch {
+            repository.saveAnime(anime)
+            isAnimeFavorite(anime.first().id)
+        }
+    }
+
+    fun deleteAnime(animeId: String) {
+        viewModelScope.launch {
+            repository.deleteAnime(animeId)
+            isAnimeFavorite(animeId)
+        }
+    }
+
+    fun isAnimeFavorite(animeId: String) {
+        viewModelScope.launch {
+            val response = repository.isAnimeFavorite(animeId)
+            _isFavAnime.value = response
         }
     }
 }

@@ -21,4 +21,6 @@ interface AnimeRepository {
 
     suspend fun deleteAnime(animeId: String)
 
+    suspend fun isAnimeFavorite(animeId: String): AnimeEntity
+
 }

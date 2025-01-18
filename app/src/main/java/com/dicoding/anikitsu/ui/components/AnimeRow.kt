@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.dicoding.anikitsu.model.DataItem
+import com.dicoding.anikitsu.util.Util
 
 @Composable
 fun AnimeRow(
@@ -31,8 +32,8 @@ fun AnimeRow(
                 val attributes = dataItem.attributes
                 AnimeItem(
                     image = attributes?.posterImage?.large,
-                    title = attributes?.titles?.en ?: attributes?.titles?.jaJp ?: "No titles",  // Judul default jika null
-                    createdAt = attributes?.createdAt ?: "Unknown",
+                    title = attributes?.titles?.en ?: attributes?.titles?.enJp ?: attributes?.titles?.jaJp ?: "No titles",
+                    createdAt = Util.extractYear("${attributes?.createdAt}").toString(),
                     modifier = Modifier.clickable {
                         navigateToDetail(dataItem.id.orEmpty())
                     }

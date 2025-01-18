@@ -1,19 +1,18 @@
 package com.dicoding.anikitsu.util
 
-import android.os.Build
-import androidx.annotation.RequiresApi
-import java.time.Instant
-import java.time.ZoneId
-import java.time.format.DateTimeFormatter
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 object Util {
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun extractYear(inputDate: String): String {
-        val instant = Instant.parse(inputDate)
+    fun extractYear(dateString: String): Int {
+        val format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
 
-        val formatter = DateTimeFormatter.ofPattern("yyyy")
-            .withZone(ZoneId.systemDefault())
+        val date = format.parse(dateString)
 
-        return formatter.format(instant)
+        val calendar = Calendar.getInstance()
+        calendar.time = date
+
+        return calendar.get(Calendar.YEAR)
     }
 }

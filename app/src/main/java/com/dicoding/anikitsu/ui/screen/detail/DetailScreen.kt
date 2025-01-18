@@ -27,6 +27,7 @@ import com.dicoding.anikitsu.ui.components.FloatingFavButton
 import com.dicoding.anikitsu.ui.components.HeadlineText
 import com.dicoding.anikitsu.ui.components.ShimmerDetail
 import com.dicoding.anikitsu.ui.components.SubTitleText
+import com.dicoding.anikitsu.util.Util
 
 @Composable
 fun DetailScreen(
@@ -126,7 +127,7 @@ fun DetailContent(
             }
             HeadlineText(title, modifier = modifier.padding(top = 120.dp, start = 18.dp))
             Row {
-                SubTitleText(createdAt, modifier = modifier.padding(start = 20.dp))
+                SubTitleText(Util.extractYear(createdAt).toString(), modifier = modifier.padding(start = 20.dp))
                 SubTitleText(subType, modifier = modifier.padding(start = 8.dp))
                 SubTitleText(episodeCount, modifier = modifier.padding(start = 8.dp))
             }

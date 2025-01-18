@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.dicoding.anikitsu.model.AnimeEntity
+import com.dicoding.anikitsu.util.Util
 
 @Composable
 fun AnimeFavGrid(
@@ -29,7 +30,7 @@ fun AnimeFavGrid(
             AnimeItem(
                 image = it.posterImage,
                 title = it.titles,
-                createdAt = it.createdAt,
+                createdAt = Util.extractYear(it.createdAt).toString(),
                 modifier = Modifier.clickable {
                     navigateToDetail(it.id)
                 }

@@ -15,8 +15,6 @@ class FavoriteViewModel @Inject constructor(private val repository: AnimeReposit
     private val _favAnime: MutableStateFlow<List<AnimeEntity>> = MutableStateFlow(emptyList())
     val favAnime: StateFlow<List<AnimeEntity>> get() = _favAnime
 
-
-
     fun getListFavAnime(){
         viewModelScope.launch {
             val response = repository.getFavAnime()
@@ -24,15 +22,4 @@ class FavoriteViewModel @Inject constructor(private val repository: AnimeReposit
         }
     }
 
-    fun saveAnime(anime: List<AnimeEntity>) {
-        viewModelScope.launch {
-            repository.saveAnime(anime)
-        }
-    }
-
-    fun deleteAnime(animeId: String) {
-        viewModelScope.launch {
-            repository.deleteAnime(animeId)
-        }
-    }
 }

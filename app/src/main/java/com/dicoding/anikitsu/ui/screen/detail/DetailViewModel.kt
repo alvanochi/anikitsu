@@ -35,7 +35,7 @@ class DetailViewModel @Inject constructor(private val repository: AnimeRepositor
                 _isLoading.value = false
             } catch (e: Exception) {
                 _error.value = e.message
-                Log.e("GAGAL", e.message.toString())
+                Log.e("getAnimeById", e.message.toString())
             }
         }
     }

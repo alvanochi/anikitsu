@@ -24,9 +24,6 @@ class DetailViewModel @Inject constructor(private val repository: AnimeRepositor
     private val _isFavAnime = MutableStateFlow<AnimeEntity?>(null)
     val isFavAnime: StateFlow<AnimeEntity?> get() = _isFavAnime
 
-    private val _error = MutableStateFlow<String?>(null)
-    val error: StateFlow<String?> get() = _error
-
     fun getAnimeById(id: String) {
         viewModelScope.launch {
             try {
@@ -34,7 +31,6 @@ class DetailViewModel @Inject constructor(private val repository: AnimeRepositor
                 _anime.value = response.data
                 _isLoading.value = false
             } catch (e: Exception) {
-                _error.value = e.message
                 Log.e("getAnimeById", e.message.toString())
             }
         }

@@ -31,7 +31,6 @@ fun HomeScreen(
     val finishedAnimeList by viewModel.finishedAnime.collectAsState()
     val queryAnimeList by viewModel.queryAnime.collectAsState()
     val query by viewModel.query
-    val errorState by viewModel.error.collectAsState()
     val isLoading by viewModel.isLoading.collectAsState()
 
     LaunchedEffect(query) {

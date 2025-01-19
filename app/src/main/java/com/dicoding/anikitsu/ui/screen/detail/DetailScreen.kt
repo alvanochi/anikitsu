@@ -41,7 +41,6 @@ fun DetailScreen(
     }
 
     val anime by viewModel.anime.collectAsState()
-    val errorState by viewModel.error.collectAsState()
     val isLoading by viewModel.isLoading.collectAsState()
     val isFavAnime by viewModel.isFavAnime.collectAsState()
 

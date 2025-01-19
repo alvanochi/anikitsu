@@ -26,9 +26,6 @@ class HomeViewModel @Inject constructor(private val repository: AnimeRepository)
     private val _query = mutableStateOf("")
     val query: State<String> get() = _query
 
-    private val _error = MutableStateFlow<String?>(null)
-    val error: StateFlow<String?> get() = _error
-
     private val _isLoading = MutableStateFlow<Boolean>(true)
     val isLoading: StateFlow<Boolean> get() = _isLoading
 
@@ -47,7 +44,6 @@ class HomeViewModel @Inject constructor(private val repository: AnimeRepository)
                 _isLoading.value = false
             } catch (e: Exception) {
                 Log.e("getListOngoingAnime", e.message.toString())
-                _error.value = e.message
             }
         }
     }
@@ -61,7 +57,6 @@ class HomeViewModel @Inject constructor(private val repository: AnimeRepository)
                 _isLoading.value = false
             } catch (e: Exception) {
                 Log.e("getListFinishedAnime", e.message.toString() )
-                _error.value = e.message
             }
         }
     }
@@ -78,7 +73,6 @@ class HomeViewModel @Inject constructor(private val repository: AnimeRepository)
             } catch (e: Exception) {
                 _isLoading.value = false
                 Log.e("getListQueryAnime", e.message.toString() )
-                _error.value = e.message
             }
         }
     }

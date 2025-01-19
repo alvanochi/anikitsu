@@ -33,7 +33,7 @@ fun AnimeGrid(
                 ShimmerList()
             }
         } else {
-            items(animeList) { dataItem ->
+            items(animeList, key = { it.id!! }) { dataItem ->
                 val attributes = dataItem.attributes
                 AnimeItem(
                     image = attributes?.posterImage?.large,

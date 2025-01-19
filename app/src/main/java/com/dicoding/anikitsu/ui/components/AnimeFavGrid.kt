@@ -26,7 +26,7 @@ fun AnimeFavGrid(
         contentPadding = PaddingValues(horizontal = 12.dp),
         modifier = modifier.height(600.dp)
     ) {
-        items(animeList) {
+        items(animeList, key = { it.id }) {
             AnimeItem(
                 image = it.posterImage,
                 title = it.titles,

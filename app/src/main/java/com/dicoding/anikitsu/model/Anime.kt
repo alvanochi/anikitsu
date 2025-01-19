@@ -20,27 +20,15 @@ data class DataItem(
 
     @field:SerializedName("id")
     val id: String? = null,
-
-//    @field:SerializedName("type")
-//    val type: String? = null
 )
 
 data class Attributes(
-
-//    @field:SerializedName("nextRelease")
-//    val nextRelease: Any? = null,
-
-    @field:SerializedName("endDate")
-    val endDate: String? = null,
 
     @field:SerializedName("episodeCount")
     val episodeCount: Int? = null,
 
     @field:SerializedName("description")
     val description: String? = null,
-
-//    @field:SerializedName("ratingRank")
-//    val ratingRank: Int? = null,
 
     @field:SerializedName("posterImage")
     val posterImage: Image? = null,
@@ -56,12 +44,6 @@ data class Attributes(
 
     @field:SerializedName("titles")
     val titles: Titles? = null,
-
-//    @field:SerializedName("ageRating")
-//    val ageRating: String? = null,
-
-//    @field:SerializedName("totalLength")
-//    val totalLength: Int? = null,
 )
 
 data class Titles(
